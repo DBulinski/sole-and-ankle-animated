@@ -8,6 +8,7 @@ import { QUERIES, WEIGHTS } from '../../constants';
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
+import {keyframes} from "styled-components";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
@@ -36,6 +37,24 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   );
 };
 
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
+const slideIn = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`
+
 const Overlay = styled(DialogOverlay)`
   position: fixed;
   top: 0;
@@ -45,6 +64,7 @@ const Overlay = styled(DialogOverlay)`
   background: var(--color-backdrop);
   display: flex;
   justify-content: flex-end;
+  animation: ${fadeIn} 100ms;
 `;
 
 const Content = styled(DialogContent)`
@@ -54,6 +74,13 @@ const Content = styled(DialogContent)`
   padding: 24px 32px;
   display: flex;
   flex-direction: column;
+  animation: ${slideIn} 300ms both;
+  animation-delay: 100ms;
+  
+  & > * {
+    animation: ${fadeIn} 300ms both;
+    animation-delay: 400ms;
+  }
 `;
 
 const CloseButton = styled(UnstyledButton)`
