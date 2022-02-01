@@ -60,6 +60,16 @@ const slideIn = keyframes`
   }
 `
 
+const open = keyframes`
+  0% {
+    transform: perspective(2000px) translateZ(0) translateX(100%) rotateY(-90deg);
+  }
+  
+  100% {
+    transform: perspective(2000px) translateX(0) rotateY(0);
+  }
+`
+
 const Overlay = styled(DialogOverlay)`
   position: fixed;
   top: 0;
@@ -79,7 +89,7 @@ const Content = styled(DialogContent)`
   padding: 24px 32px;
   display: flex;
   flex-direction: column;
-  animation: ${slideIn} 300ms both;
+  animation: ${open} 300ms both;
   animation-delay: 100ms;
   
   & > * {
