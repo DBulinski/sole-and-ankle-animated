@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@reach/dialog": "0.15.0",
-    "date-fns": "2.16.1",
+    "date-fns": "2.28.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-feather": "2.0.9",
