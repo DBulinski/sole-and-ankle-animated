@@ -9,6 +9,13 @@ import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
 import VisuallyHidden from '../VisuallyHidden';
 
+const MenuLink = ({ children, ...delegated }) => {
+  return <NavLink {...delegated}>
+      <span>{children}</span>
+      <strong>{children}</strong>
+  </NavLink>
+}
+
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
 
@@ -20,12 +27,12 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <MenuLink href="/sale">Sale</MenuLink>
+          <MenuLink href="/new">New&nbsp;Releases</MenuLink>
+          <MenuLink href="/men">Men</MenuLink>
+          <MenuLink href="/women">Women</MenuLink>
+          <MenuLink href="/kids">Kids</MenuLink>
+          <MenuLink href="/collections">Collections</MenuLink>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -116,10 +123,26 @@ const Filler = styled.div`
 
 const NavLink = styled.a`
   font-size: 1.125rem;
+  line-height: 1.4rem;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
+  display: flex;
+  flex-direction: column;
+  height: 1.4rem;
+  overflow: hidden;
+  
+  span, strong {
+    transition: 300ms transform;
+  }
+  
+  &:hover {
+    span, strong {
+      display: inline-block;
+      transform: translateY(-100%);
+    }
+  }
 
   &:first-of-type {
     color: var(--color-secondary);
