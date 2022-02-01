@@ -48,10 +48,15 @@ const fadeIn = keyframes`
 
 const slideIn = keyframes`
   0% {
-    transform: translateX(100%);
+    transform: translateX(100%) scaleX(1.1);
   }
+  
+  70% {
+    transform: translateX(-3%) scaleX(1.1);
+  }
+  
   100% {
-    transform: translateX(0);
+    transform: translateX(0) scaleX(1);
   }
 `
 
